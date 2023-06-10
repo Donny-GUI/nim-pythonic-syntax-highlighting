@@ -1,0 +1,356 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "nim syntax",
+	"scopeName": "source.nim",
+	"patterns": [
+	  {
+		"include": "#comments"
+	  },
+	  {
+		"include": "#strings"
+	  },
+	  {
+		"include": "#numbers"
+	  },
+	  {
+		"include": "#keywords"
+	  },
+	  {
+		"include": "#operators"
+	  },
+	  {
+		"include": "#function-procinitions"
+	  },
+	  {
+		"include": "import-statements"
+	  },
+	  {
+		"include": "#function-calls"
+	  },
+	  {
+		"include": "#identifiers"
+	  },
+	  {
+		"include": "#punctuation"
+	  },
+	  {
+		"include": "#structs"
+	  }
+	],
+	"import-statements":{
+		"patterns":[
+		{
+			"name": "keyword.control.import.nim",
+			"match": "\\b(import)\\b",
+			"captures": {
+			  "1": {
+				"name": "keyword.control.import.nim"
+			  }
+			}
+		  }
+		]
+	},
+	"function-calls":{
+		"patterns": [
+		 {
+			"name": "meta.function-call.nim",
+			"match":"\\b[a-zA-Z_][a-zA-Z0-9_]*\\s*(?=\\()"
+		 }
+		]
+
+	},
+	"repository": {
+	  "comments": {
+		"patterns": [
+		  {
+			"name": "comment.line.number-sign.nim",
+			"match": "#.*$"
+		  },
+		  {
+			"name": "comment.block.nim",
+			"begin": "'''",
+			"end": "'''"
+		  },
+		  {
+			"name": "keyword.control.import.nim",
+			"match": "\\b(import\\s+)(std)(\\/)(os)\\b",
+			"captures": {
+			  "1": {
+				"name": "keyword.control.import.nim"
+			  },
+			  "2": {
+				"name": "support.module.std.nim"
+				},
+			  "3": {
+				"name": "punctuation.separator.import.nim"
+			  },
+			  "4": {
+				"name": "support.module.os.nim"
+			  }
+			}
+		  }		  
+		]
+	  },
+	  "strings": {
+		"patterns": [
+		  {
+			"name": "string.quoted.single.nim",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+			  {
+				"name": "constant.character.escape.nim",
+				"match": "\\\\."
+			  }
+			]
+		  },
+		  {
+			"name": "string.quoted.double.nim",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+			  {
+				"name": "constant.character.escape.nim",
+				"match": "\\\\."
+			  }
+			]
+		  }
+		]
+	  },
+	  "numbers": {
+		"patterns": [
+		  {
+			"name": "constant.numeric.nim",
+			"match": "\\b\\d+\\b"
+		  }
+		]
+	  },
+	  "keywords": {
+		"patterns": [
+		  {
+			"name": "keyword.control.nim",
+			"match": "\\b(addr|and|as|asm|bind|@|block|break|case|cast|concept|const|continue|converter|defer|discard|distinct|div|do|elif|else|end|except|export|finally|for|from|func|generic|if|import|in|include|interface|is|isnot|iterator|let|macro|mixin|nil|of|or|out|ptr|raise|ref|return|shl|shr|static|template|try|using|var|when|while|with|xor)\\b"
+		  },
+		  {
+			"name": "keyword.constant.nim",
+			"match": "\\b(True|False|proc|None|struct|method|not)\\b"
+		  }
+		]
+	  },
+	  "operators": {
+		"patterns": [
+		  {
+			"name": "keyword.operator.nim",
+			"match": "\\b(and|or|not|is|in|not in|is not)\\b"
+		  },
+		  {
+			"name": "keyword.operator.arithmetic.nim",
+			"match": "\\b(\\+|-|\\*|/|//|%|\\*\\*)\\b"
+		  },
+		  {
+			"name": "keyword.operator.assignment.nim",
+			"match": "\\b(=|\\+=|-=|\\*=|/=|//=|%=|\\*\\*=)\\b"
+		  },
+		  {
+			"name": "keyword.operator.comparison.nim",
+			"match": "\\b(==|!=|<|>|<=|>=)\\b"
+		  },
+		  {
+			"name": "keyword.operator.bitwise.nim",
+			"match": "\\b(&|\\||\\^|~|<<|>>)\\b"
+		  }
+		]
+	  },
+	  
+	  "function-procinitions": {
+		"patterns": [
+		  {
+			"name": "entity.name.function.nim",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\s*(?=\\()"
+		  },
+		  {
+		  "name":"entity.name.type.string.nim",
+		  "match": "\\bstring"
+		  },
+		  {
+			"name":"entity.name.type.int.nim",
+			"match": "\\bint"
+		  },
+		  {
+			"name":"entity.name.type.int8.nim",
+			"match": "\\bint8"
+		  },
+		  {
+			"name":"entity.name.type.int16.nim",
+			"match": "\\bint16"
+		  },
+		  {
+			"name":"entity.name.type.int32.nim",
+			"match": "\\bint32"
+		  },
+		  {
+			"name":"entity.name.type.int64.nim",
+			"match": "\\bint64"
+		  },
+		  {
+			"name":"entity.name.type.int128.nim",
+			"match": "\\bint128"
+		  },
+		  {
+			"name":"entity.name.type.int256.nim",
+			"match": "\\bint256"
+		  },
+		  {
+			"name":"entity.name.type.cint.nim",
+			"match": "\\bcint"
+		  },
+		  {
+			"name":"entity.name.type.clong.nim",
+			"match": "\\bclong"
+		  },
+		  {
+			"name":"entity.name.type.uint.nim",
+			"match": "\\buint"
+		  },
+		  {
+			"name":"entity.name.type.uint8.nim",
+			"match": "\\buint8"
+		  },
+		  {
+			"name":"entity.name.type.uint16.nim",
+			"match": "\\buint16"
+		  },
+		  {
+			"name":"entity.name.type.uint32.nim",
+			"match": "\\buint32\\b"
+		  },
+		  {
+			"name":"entity.name.type.uint64.nim",
+			"match": "\\buint64"
+		  },
+		  {
+			"name":"entity.name.type.float.nim",
+			"match": "\\bfloat"
+		  },
+		  {
+			"name":"entity.name.type.float32.nim",
+			"match": "\\bfloat32"
+		  },
+		  {
+			"name":"entity.name.type.float64.nim",
+			"match": "\\bfloat64"
+		  },
+		  {
+			"name":"entity.name.type.char.nim",
+			"match": "\\bchar"
+		  },
+		  {
+			"name":"entity.name.type.char8.nim",
+			"match": "\\bchar8"
+		  },
+		  {
+			"name":"entity.name.type.char16.nim",
+			"match": "\\bchar16"
+		  },
+		  {
+			"name":"entity.name.type.char32.nim",
+			"match": "\\bchar32"
+		  },
+		  {
+			"name":"entity.name.type.bool.nim",
+			"match": "\\bbool"
+		  },
+		  {
+			"name":"entity.name.type.cstring.nim",
+			"match": "\\bcstring"
+		  },
+		  {
+			"name":"entity.name.type.seq.nim",
+			"match": "\\bseq"
+		  },
+		  {
+			"name":"entity.name.type.array.nim",
+			"match": "\\barray"
+		  },
+		  {
+			"name":"entity.name.type.openArray.nim",
+			"match": "\\bopenArray"
+		  },
+		  {
+			"name":"entity.name.type.tuple.nim",
+			"match": "\\btuple"
+		  },
+		  {
+			"name":"entity.name.type.enum.nim",
+			"match": "\\benum"
+		  },
+		  {
+		  "name":"entity.name.class",
+		  "match": "\\btype"
+		  },
+		  {
+			"name": "keyword.control.import.nim",
+			"match": "\\b(import\\s+)(std)(\\/)(os)\\b",
+			"captures": {
+			  "1": {
+				"name": "keyword.control.import.nim"
+			  },
+			  "2": {
+				"name": "support.module.std.nim"
+			  },
+			  "3": {
+				"name": "punctuation.separator.import.nim"
+			  },
+			  "4": {
+				"name": "support.module.os.nim"
+			  }
+			}
+		  }
+		  
+		]
+	  },
+	  "identifiers": {
+		"patterns": [
+		  {
+			"name": "variable.other.nim",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?!\\s*\\()"
+		  },
+		  {
+			"name": "variable.other.nim",
+			"match": "\\bint\\b",
+			"captures": {
+			  "0": {
+				"name": "support.type.nim"
+			  }
+			}
+		  }
+
+		]
+	  },
+	  "punctuation": {
+		"patterns": [
+		  {
+			"name": "punctuation.separator.nim",
+			"match": "[\\(\\)\\[\\]\\{\\},.:;]"
+		  }
+		]
+	  },
+	  "class-definitions": {
+		"patterns": [
+		  {
+			"name": "entity.name.type.class.nim",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*=\\s*ref\\s+object)\\b"
+		  }
+		]
+	  },
+	  "class-instances": {
+		"patterns": [
+			{
+				"name": "support.class.instance.nim",
+				"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b\\s*:\\s*type\\b"
+			}
+		]
+	  }
+	}
+  }
+  

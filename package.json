@@ -1,0 +1,25 @@
+{
+  "name": "nim",
+  "displayName": "nim-highlight",
+  "description": "Nim Syntax Highlighting",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "nim",
+      "aliases": ["nim", "nim"],
+      "extensions": [".nim"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "nim",
+      "scopeName": "source.nim",
+      "path": "./syntaxes/nim.tmLanguage.json"
+    }]
+  }
+}
